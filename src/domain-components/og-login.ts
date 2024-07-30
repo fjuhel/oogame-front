@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import '@shoelace-style/shoelace/dist/components/button/button.js';
 import '@shoelace-style/shoelace/dist/components/input/input.js';
+import '@shoelace-style/shoelace/dist/themes/light.css';
 
 import rootStore from '../stores/RootStore';
 import { Auth } from '../api/generated/Auth';
@@ -20,17 +21,13 @@ export class OgLogin extends LitElement {
       flex-direction: column;
       width: 300px;
       margin: auto;
-    }
-    .input-box {
-      background-color: white;
-      color: grey;
-      margin-bottom: 10px;
-      padding: 8px;
-      font-size: 14px;
+      row-gap: 10px;
     }
   `;
 
-  async login() {
+  async handleLogin(e: Event) {
+    e.preventDefault();
+
     const auth = new Auth();
     const users = new Users();
 
@@ -56,11 +53,11 @@ export class OgLogin extends LitElement {
 
   render() {
     return html`
-      <div class="login-container">
-        <sl-input class="input-box" type="email" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
-        <sl-input class="input-box" type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
-        <sl-button @click="${this.login}">Login</sl-button>
-      </div>
+      <form class="login-container" @click="${this.handleLogin}">
+        <sl-input type="email" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
+        <sl-input type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
+        <sl-button type="submit">Login</sl-button>
+      </form>
     `;
   }
 }

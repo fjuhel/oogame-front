@@ -1,7 +1,13 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
+import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js';
+import '@shoelace-style/shoelace/dist/components/tab/tab.js';
+import '@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.js';
+import '@shoelace-style/shoelace/dist/themes/light.css';
+
 import './og-login';
+import './og-register';
 
 @customElement('og-welcome')
 export class OgWelcome extends LitElement {
@@ -9,7 +15,14 @@ export class OgWelcome extends LitElement {
   protected override render() {
     return html`
       <h1>Welcome to Ogame!</h1>
-      <og-login></og-login>
+      <sl-tab-group>
+        <sl-tab slot="nav" panel="login">Login</sl-tab>
+        <sl-tab slot="nav" panel="register">Sign in</sl-tab>
+
+        <sl-tab-panel name="login"><og-login></og-login></sl-tab-panel>
+        <sl-tab-panel name="register"><og-register></og-register></sl-tab-panel>
+      </sl-tab-group>
+
     `;
   }
 
@@ -19,6 +32,11 @@ export class OgWelcome extends LitElement {
       display: block;
       padding: 25px;
       color: var(--my-element-text-color);
+    }
+
+    sl-tab {
+      width: 50%;
+      text-align: center;
     }
     `
     return [mainStyle];

@@ -1,6 +1,10 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
+import '@shoelace-style/shoelace/dist/components/button/button.js';
+import '@shoelace-style/shoelace/dist/components/input/input.js';
+import '@shoelace-style/shoelace/dist/themes/light.css';
+
 import { Auth } from '../api/generated/Auth';
 import { RegisterRequest } from '../api/generated/data-contracts';
 
@@ -14,11 +18,11 @@ export class OgLogin extends LitElement {
 
   protected override render() {
     return html`
-      <form @submit=${this.handleSubmit}>
-        <input type="text" .value=${this.username} @input="${(e: any) => this.username = e.target.value}" placeholder="Username" />
-        <input type="password" .value=${this.password} @input="${(e: any) => this.password = e.target.value}" placeholder="Password" />
-        <input type="password" .value=${this.confirmPassword} @input="${(e: any) => this.confirmPassword = e.target.value}" placeholder="Confirm password" />
-        <button type="submit">Register</button>
+      <form class="register-container" @click="${this.handleSubmit}">
+        <sl-input type="text" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
+        <sl-input type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
+        <sl-input type="password" placeholder="Confirm password" password-toggle @input="${(e: any) => this.confirmPassword = e.target.value}"></sl-input>
+        <sl-button type="submit">Register</sl-button>
       </form>
     `;
   }
@@ -40,12 +44,14 @@ export class OgLogin extends LitElement {
 
   public static get styles() {
     const mainStyle = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--my-element-text-color);
-    }
-    `
+      .register-container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: auto;
+        row-gap: 10px;
+      }
+    `;
     return [mainStyle];
   }
 }
