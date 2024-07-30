@@ -13,7 +13,6 @@ import { RegisterRequest } from '../api/generated/data-contracts';
 export class OgLogin extends LitElement {
   @state() username: string = '';
   @state() password: string = '';
-  @state() confirmPassword: string = '';
   @state() errorMessage = '';
 
   protected override render() {
@@ -21,7 +20,6 @@ export class OgLogin extends LitElement {
       <form class="register-container" @click="${this.handleSubmit}">
         <sl-input type="text" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
         <sl-input type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
-        <sl-input type="password" placeholder="Confirm password" password-toggle @input="${(e: any) => this.confirmPassword = e.target.value}"></sl-input>
         <sl-button type="submit">Register</sl-button>
       </form>
     `;
@@ -30,10 +28,6 @@ export class OgLogin extends LitElement {
   private async handleSubmit(event: Event) {
     const auth = new Auth();
     event.preventDefault();
-    if (this.password !== this.confirmPassword) {
-      this.errorMessage = 'Passwords do not match';
-      return;
-    }
 
     const registerRequest: RegisterRequest = {
       username: this.username,
