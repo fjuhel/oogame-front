@@ -1,5 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+
+import '@shoelace-style/shoelace/dist/components/button/button.js';
+import '@shoelace-style/shoelace/dist/components/input/input.js';
+
 import rootStore from '../stores/RootStore';
 import { Auth } from '../api/generated/Auth';
 import { LoginRequest } from '../api/generated/data-contracts';
@@ -17,15 +21,12 @@ export class OgLogin extends LitElement {
       width: 300px;
       margin: auto;
     }
-    input {
+    .input-box {
+      background-color: white;
+      color: grey;
       margin-bottom: 10px;
       padding: 8px;
       font-size: 14px;
-    }
-    button {
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
     }
   `;
 
@@ -56,9 +57,9 @@ export class OgLogin extends LitElement {
   render() {
     return html`
       <div class="login-container">
-        <input type="text" @input="${(e: any) => this.username = e.target.value}" placeholder="Username">
-        <input type="password" @input="${(e: any) => this.password = e.target.value}" placeholder="Password">
-        <button @click="${this.login}">Login</button>
+        <sl-input class="input-box" type="email" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
+        <sl-input class="input-box" type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
+        <sl-button @click="${this.login}">Login</sl-button>
       </div>
     `;
   }
