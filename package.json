@@ -6,12 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate": "npx swagger-typescript-api -p ../openapi.json -o src/api/generated --modular --clean-output --module-name-first-tag --sort-types --disable-throw-on-error --templates ./swagger-typescript-templates"
   },
   "dependencies": {
-    "lit": "^3.1.4"
+    "eslint-config-love": "^62.0.0",
+    "lit": "^3.1.4",
+    "mobx": "^6.13.1",
+    "mobx-lit-element": "^0.1.2"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "swagger-typescript-api": "^13.0.14",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
   }
