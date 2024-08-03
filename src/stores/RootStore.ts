@@ -1,5 +1,7 @@
 import { observable, action, makeObservable } from 'mobx';
-import { User } from '../api/generated/Api.ts';
+import { User } from '../api/generated/data-contracts.ts';
+
+import type { PossibleLanguages } from '../utils/languages.js';
 
 class AuthStore {
   @observable token: string | null = localStorage.getItem('jwt');
@@ -11,7 +13,6 @@ class AuthStore {
 
   @action setToken(token: string) {
     this.token = token;
-    console.log("set token")
     localStorage.setItem('jwt', token);
   }
 
@@ -31,6 +32,8 @@ class AuthStore {
 
 class UserStore {
   @observable users: User[] = [];
+  @observable language: PossibleLanguages | null = null;
+  @observable debugMode: boolean = false;
 
   constructor() {
     makeObservable(this);

@@ -14,6 +14,7 @@
   "dependencies": {
     "@shoelace-style/shoelace": "^2.16.0",
     "eslint-config-love": "^62.0.0",
+    "intl-messageformat": "^10.5.14",
     "lit": "^3.1.4",
     "mobx": "^6.13.1",
     "mobx-lit-element": "^0.1.2"

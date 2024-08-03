@@ -8,6 +8,10 @@ import '@shoelace-style/shoelace/dist/themes/light.css';
 import { Auth } from '../api/generated/Auth';
 import { RegisterRequest } from '../api/generated/data-contracts';
 
+import createLocalizer from '../utils/create-localizer';
+import commonLocales from '../utils/common.locales';
+
+const localize = createLocalizer(commonLocales);
 
 @customElement('og-register')
 export class OgLogin extends LitElement {
@@ -18,9 +22,9 @@ export class OgLogin extends LitElement {
   protected override render() {
     return html`
       <form class="register-container" @click="${this.handleSubmit}">
-        <sl-input type="text" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
-        <sl-input type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
-        <sl-button type="submit">Register</sl-button>
+        <sl-input type="text" placeholder="${localize('common.username.capitalize')}" @input="${(e: any) => this.username = e.target.value}"></sl-input>
+        <sl-input type="password" placeholder="${localize('common.password.capitalize')}" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
+        <sl-button type="submit">${localize('common.register.capitalize')}</sl-button>
       </form>
     `;
   }

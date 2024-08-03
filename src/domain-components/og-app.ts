@@ -38,9 +38,9 @@ export class OgApp extends LitElement {
   public static get styles() {
     const mainStyle = css`
     :host {
-      display: block;
-      padding: 25px;
-      color: var(--my-element-text-color);
+      height: calc(100% - 60px);
+      padding: 30px 0 30px 0;
+      width: 1000px;
     }
     `
     return [mainStyle];

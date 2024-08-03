@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { Planet, PlanetDto } from "./data-contracts";
+import { CreateUserPlanetRequest, PlanetDto, UniverseDto } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class UserPlanet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,13 +17,15 @@ export class UserPlanet<SecurityDataType = unknown> extends HttpClient<SecurityD
    * No description
    *
    * @tags UserPlanet
-   * @name GetUserPlanets
-   * @request GET:/api/{universe}/planet
+   * @name ListUserPlanets
+   * @request POST:/api/user-planet/list
    */
-  getUserPlanets = (universe: string, params: RequestParams = {}) =>
+  listUserPlanets = (data: UniverseDto, params: RequestParams = {}) =>
     this.request<PlanetDto[], any>({
-      path: `/api/${universe}/planet`,
-      method: "GET",
+      path: `/api/user-planet/list`,
+      method: "POST",
+      body: data,
+      type: ContentType.Json,
       ...params,
     });
   /**
@@ -31,11 +33,11 @@ export class UserPlanet<SecurityDataType = unknown> extends HttpClient<SecurityD
    *
    * @tags UserPlanet
    * @name CreateUserPlanet
-   * @request POST:/api/{universe}/planet
+   * @request POST:/api/user-planet/create
    */
-  createUserPlanet = (universe: string, data: Planet, params: RequestParams = {}) =>
+  createUserPlanet = (data: CreateUserPlanetRequest, params: RequestParams = {}) =>
     this.request<PlanetDto, any>({
-      path: `/api/${universe}/planet`,
+      path: `/api/user-planet/create`,
       method: "POST",
       body: data,
       type: ContentType.Json,

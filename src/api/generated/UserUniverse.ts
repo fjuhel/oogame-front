@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { UserUniverse } from "./data-contracts";
+import { UniverseEnum, UserUniverse } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class UserUniverse<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -20,7 +20,7 @@ export class UserUniverse<SecurityDataType = unknown> extends HttpClient<Securit
    * @name CreateUserUniverse
    * @request POST:/api/universe
    */
-  createUserUniverse = (data: UserUniverse, params: RequestParams = {}) =>
+  createUserUniverse = (data: UniverseEnum, params: RequestParams = {}) =>
     this.request<UserUniverse, any>({
       path: `/api/universe`,
       method: "POST",

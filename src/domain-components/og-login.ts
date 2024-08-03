@@ -10,6 +10,11 @@ import { Auth } from '../api/generated/Auth';
 import { LoginRequest } from '../api/generated/data-contracts';
 import { Users } from '../api/generated/Users';
 
+import createLocalizer from '../utils/create-localizer';
+import commonLocales from '../utils/common.locales';
+
+const localize = createLocalizer(commonLocales);
+
 @customElement('og-login')
 export class OgLogin extends LitElement {
   @property({ type: String }) username = '';
@@ -53,10 +58,10 @@ export class OgLogin extends LitElement {
 
   render() {
     return html`
-      <form class="login-container" @click="${this.handleLogin}">
-        <sl-input type="email" placeholder="Username" @input="${(e: any) => this.username = e.target.value}"></sl-input>
-        <sl-input type="password" placeholder="Password" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
-        <sl-button type="submit">Login</sl-button>
+      <form class="login-container" @submit="${this.handleLogin}">
+        <sl-input type="email" placeholder="${localize('common.username.capitalize')}" @input="${(e: any) => this.username = e.target.value}"></sl-input>
+        <sl-input type="password" placeholder="${localize('common.password.capitalize')}" password-toggle @input="${(e: any) => this.password = e.target.value}"></sl-input>
+        <sl-button type="submit">${localize('common.login.capitalize')}</sl-button>
       </form>
     `;
   }

@@ -3,12 +3,17 @@ import { customElement } from 'lit/decorators.js';
 
 import rootStore from '../stores/RootStore';
 
+import createLocalizer from '../utils/create-localizer';
+import commonLocales from '../utils/common.locales';
+
+const localize = createLocalizer(commonLocales);
+
 @customElement('og-logout')
 export class OgLogout extends LitElement {
 
   protected override render() {
     return html`
-      <button @click=${this.handleLogout}>Logout</button>
+      <button @click=${this.handleLogout}>${localize('common.logout.capitalize')}</button>
     `;
   }
 
