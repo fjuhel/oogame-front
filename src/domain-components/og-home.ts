@@ -2,7 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
 import { UserPlanet } from '../api/generated/UserPlanet';
-import { PlanetDto } from '../api/generated/data-contracts';
+import { PlanetDtoExtended } from '../api/extended/data-contracts';
 import { UniverseEnum } from '../api/generated/data-contracts';
 
 // import createLocalizer from '../utils/create-localizer';
@@ -17,8 +17,8 @@ import './og-planet';
 @customElement('og-home')
 export class OgHome extends LitElement {
   @state() private universe?: UniverseEnum = UniverseEnum.EAST_BLUE;
-  @state() private allPlanets?: Array<PlanetDto>;
-  @state() private activePlanet?: PlanetDto;
+  @state() private allPlanets?: Array<PlanetDtoExtended>;
+  @state() private activePlanet?: PlanetDtoExtended;
 
   protected override render() {
     return html`
@@ -32,7 +32,7 @@ export class OgHome extends LitElement {
           </div>
         </div>
         <div class="planets">
-          ${this.allPlanets?.map((planet: PlanetDto) => html`<og-planet .planet=${planet}></og-planet>`)}
+          ${this.allPlanets?.map((planet: PlanetDtoExtended) => html`<og-planet .planet=${planet}></og-planet>`)}
         </div>
       </div>
     `;
@@ -79,7 +79,10 @@ export class OgHome extends LitElement {
       const response = await userPlanet.listUserPlanets({universe: this.universe});
       const responseData = await response.json();
       this.allPlanets = responseData;
-      this.activePlanet = responseData[0];
+      if (this.allPlanets?.length) {
+        this.allPlanets[0].active = true;
+        this.activePlanet = this.allPlanets[0];
+      }
     } catch (error) {
       console.error('Failed to fetch planets', error);
     }
