@@ -63,6 +63,7 @@ export class OgHome extends LitElement {
       flex-wrap: wrap;
       align-items: center;
       row-gap: 30px;
+      padding-top: 150px;
     }
 
     `

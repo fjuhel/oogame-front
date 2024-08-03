@@ -1,32 +1,8 @@
 export default {
   fr_FR: {
-    'common.overview.capitalize': `Vue d'ensemble`,
-    'common.resources.capitalize': `Ressources`,
-    'common.lifeform.capitalize': `Forme de vie`,
-    'common.facilities.capitalize': `Installations`,
-    'common.merchant.capitalize': `Marchand`,
-    'common.research.capitalize': `Recherche`,
-    'common.shipyard.capitalize': `Chantier spatial`,
-    'common.defence.capitalize': `Défense`,
-    'common.fleet.capitalize': `Flotte`,
-    'common.galaxy.capitalize': `Galaxie`,
-    'common.empire.capitalize': `Empire`,
-    'common.alliance.capitalize': `Alliance`,
-    'common.combatSimulation.capitalize': `Simulation de combat`,
+
   },
   en_GB: {
-    'common.overview.capitalize': `Overview`,
-    'common.resources.capitalize': `Resources`,
-    'common.lifeform.capitalize': `Lifeform`,
-    'common.facilities.capitalize': `Facilities`,
-    'common.merchant.capitalize': `Merchant`,
-    'common.research.capitalize': `Research`,
-    'common.shipyard.capitalize': `Shipyard`,
-    'common.defence.capitalize': `Defence`,
-    'common.fleet.capitalize': `Fleet`,
-    'common.galaxy.capitalize': `Galaxy`,
-    'common.empire.capitalize': `Empire`,
-    'common.alliance.capitalize': `Alliance`,
-    'common.combatSimulation.capitalize': `Combat Simulation`,
+
   },
 };

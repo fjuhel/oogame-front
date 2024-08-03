@@ -7,9 +7,9 @@ import '@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.js';
 import '@shoelace-style/shoelace/dist/themes/light.css';
 
 import createLocalizer from '../../utils/create-localizer';
-import locales from './locales';
+import commonLocales from '../../utils/common.locales';
 
-const localize = createLocalizer(locales);
+const localize = createLocalizer(commonLocales);
 import '../og-logout';
 
 @customElement('og-game-menu')

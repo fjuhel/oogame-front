@@ -25,6 +25,8 @@ export interface Planet {
   /** @format int32 */
   antiBallisticMissile?: number;
   /** @format int32 */
+  baseFields?: number;
+  /** @format int32 */
   crawler?: number;
   /** @format int32 */
   crystal?: number;
@@ -108,6 +110,8 @@ export interface PlanetDto {
   /** @format int32 */
   antiBallisticMissile: number;
   /** @format int32 */
+  baseFields: number;
+  /** @format int32 */
   crawler: number;
   /** @format int32 */
   crystal: number;
@@ -159,6 +163,8 @@ export interface PlanetDto {
   /** @format int32 */
   naniteFactoryLevel: number;
   /** @format int32 */
+  occupiedFields: number;
+  /** @format int32 */
   plasmaTurret: number;
   /** @format int32 */
   researchLabLevel: number;
@@ -183,6 +189,8 @@ export interface PlanetDto {
   spaceDockLevel: number;
   /** @format int32 */
   terraformerLevel: number;
+  /** @format int32 */
+  totalFields: number;
 }
 
 export interface PlanetResources {
