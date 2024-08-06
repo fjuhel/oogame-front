@@ -6,10 +6,10 @@ import commonLocales from '../utils/common.locales';
 
 const localize = createLocalizer(commonLocales);
 
-export const metalIcon = new URL('../assets/resources/metal_small.png', import.meta.url);
-export const crystalIcon = new URL('../assets/resources/crystal_small.png', import.meta.url);
-export const deuteriumIcon = new URL('../assets/resources/deuterium_small.png', import.meta.url);
-export const energyIcon = new URL('../assets/resources/energy_small.png', import.meta.url);
+export const metalIcon = new URL('../assets/resource/metal_small.png', import.meta.url);
+export const crystalIcon = new URL('../assets/resource/crystal_small.png', import.meta.url);
+export const deuteriumIcon = new URL('../assets/resource/deuterium_small.png', import.meta.url);
+export const energyIcon = new URL('../assets/resource/energy_small.png', import.meta.url);
 
 // Create enum of resources
 export enum ResourcesEnum {

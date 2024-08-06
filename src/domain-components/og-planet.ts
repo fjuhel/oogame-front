@@ -2,6 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { PlanetDtoExtended } from '../api/extended/data-contracts';
 
+import { routeRedirected } from '../tools/route-redirected';
 import createLocalizer from '../utils/create-localizer';
 import commonLocales from '../utils/common.locales';
 
@@ -22,16 +23,16 @@ export class OgPlanet extends LitElement {
         <div class="tooltip-hitbox">
           <div class="tooltip">
             <div>${this.planet.name} [${this.planet.galaxy}:${this.planet.solarSystem}:${this.planet.slot}]</div>
-            <div>${this.planet.diameter} (${this.planet.occupiedFields}/${this.planet.totalFields})</div>
+            <div>${this.planet.diameter.toLocaleString().replace(" ", ".")} km (${this.planet.occupiedFields}/${this.planet.totalFields})</div>
             <div>${this.planet.minTemperature}°C ${localize('common.to')} ${this.planet.maxTemperature}°C</div>
-            <div id="overview" class="link">${localize('common.overview.capitalize')}</div>
-            <div id="resources" class="link">${localize('common.resources.capitalize')}</div>
-            <div id="research" class="link">${localize('common.research.capitalize')}</div>
-            <div id="facilities" class="link">${localize('common.facilities.capitalize')}</div>
-            <div id="shipyard" class="link">${localize('common.shipyard.capitalize')}</div>
-            <div id="defence" class="link">${localize('common.defence.capitalize')}</div>
-            <div id="fleet" class="link">${localize('common.fleet.capitalize')}</div>
-            <div id="galaxy" class="link">${localize('common.galaxy.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/overview'})} class="link">${localize('common.overview.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/resources'})} class="link">${localize('common.resources.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/research'})} class="link">${localize('common.research.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/facilities'})} class="link">${localize('common.facilities.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/shipyard'})} class="link">${localize('common.shipyard.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/defence'})} class="link">${localize('common.defence.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/fleet'})} class="link">${localize('common.fleet.capitalize')}</div>
+            <div @click=${() => routeRedirected({url: '/galaxy'})} class="link">${localize('common.galaxy.capitalize')}</div>
           </div>
         </div>
       </div>
